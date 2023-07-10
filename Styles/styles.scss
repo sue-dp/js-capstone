@@ -1,0 +1,83 @@
+@import "./variables.scss";
+
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  font-family: "Nunito";
+
+  .main-cont {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+
+    .header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 20vh;
+      margin: 0;
+      padding: 2%;
+      // position: sticky;
+      // top: 0;
+      background-color: $cerulean;
+      color: $timberwolf;
+      font-size: 5vh;
+      font-weight: bold;
+    }
+
+    .generator-cont {
+      display: flex;
+      background-color: $timberwolf;
+      width: 100%;
+      height: 95%;
+
+      .name-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 25%;
+        background-color: $ecru;
+        overflow-y: scroll;
+        // padding-left: 5%;
+      }
+
+      .generator {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        align-items: center;
+        justify-content: center;
+        width: 75%;
+        height: 100%;
+        margin-left: 25%;
+
+        .selected-name {
+          margin-bottom: 10%;
+          font-size: 100px;
+          font-weight: 900;
+          color: $cerulean;
+        }
+
+        button {
+          width: 20%;
+          height: 40px;
+          border-radius: 5px;
+          font-family: "Nunito";
+          font-size: 24px;
+          font-weight: 400;
+          background-color: $indian-red;
+
+          &:hover {
+            transform: scale(1.1);
+            border-radius: 15px;
+            cursor: pointer;
+            background-color: $verdigris;
+          }
+        }
+      }
+    }
+  }
+}
