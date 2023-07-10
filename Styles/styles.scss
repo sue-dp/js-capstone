@@ -41,7 +41,45 @@ body {
         width: 25%;
         background-color: $ecru;
         overflow-y: scroll;
-        // padding-left: 5%;
+
+        .studentName {
+          font-size: 36px;
+        }
+
+        .weight-counter {
+          display: flex;
+
+          .minus-button {
+            background-color: $indian-red;
+            font-size: 24px;
+            border: 1px solid black;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+
+            &:hover {
+              border-top-left-radius: 15px;
+              border-bottom-left-radius: 15px;
+            }
+          }
+
+          .counter {
+            border: 1px solid black;
+            font-size: 24px;
+          }
+
+          .add-button {
+            background-color: $verdigris;
+            font-size: 24px;
+            border: 1px solid black;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+
+            &:hover {
+              border-top-right-radius: 15px;
+              border-bottom-right-radius: 15px;
+            }
+          }
+        }
       }
 
       .generator {

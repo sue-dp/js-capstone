@@ -37,6 +37,38 @@ body .main-cont .generator-cont .name-list {
   background-color: #d4b483;
   overflow-y: scroll;
 }
+body .main-cont .generator-cont .name-list .studentName {
+  font-size: 36px;
+}
+body .main-cont .generator-cont .name-list .weight-counter {
+  display: flex;
+}
+body .main-cont .generator-cont .name-list .weight-counter .minus-button {
+  background-color: #c1666b;
+  font-size: 24px;
+  border: 1px solid black;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+body .main-cont .generator-cont .name-list .weight-counter .minus-button:hover {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+body .main-cont .generator-cont .name-list .weight-counter .counter {
+  border: 1px solid black;
+  font-size: 24px;
+}
+body .main-cont .generator-cont .name-list .weight-counter .add-button {
+  background-color: #48a9a6;
+  font-size: 24px;
+  border: 1px solid black;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+body .main-cont .generator-cont .name-list .weight-counter .add-button:hover {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
 body .main-cont .generator-cont .generator {
   display: flex;
   flex-direction: column;
