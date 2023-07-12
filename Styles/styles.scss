@@ -1,13 +1,22 @@
 @import "./variables.scss";
 
 @keyframes nameAnimation {
-  0%   { color: $cerulean; }
-  25%  { color: $indian-red; }
-  50%  { color: $ecru; }
-  75%  { color: $verdigris; }
-  100% { color: $cerulean; }
+  0% {
+    color: $cerulean;
+  }
+  25% {
+    color: $indian-red;
+  }
+  50% {
+    color: $ecru;
+  }
+  75% {
+    color: $verdigris;
+  }
+  100% {
+    color: $cerulean;
+  }
 }
-
 
 body {
   width: 100vw;
@@ -126,9 +135,7 @@ body {
           font-size: 100px;
           font-weight: 900;
           color: $cerulean;
-          animation: nameAnimation 20s infinite;
-          
-
+        }
         button {
           width: 20%;
           height: 40px;
@@ -145,6 +152,10 @@ body {
             background-color: $verdigris;
           }
         }
+      }
+
+      .animate {
+        animation: nameAnimation 10s infinite;
       }
     }
   }

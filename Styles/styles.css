@@ -1,3 +1,20 @@
+@keyframes nameAnimation {
+  0% {
+    color: #4281a4;
+  }
+  25% {
+    color: #c1666b;
+  }
+  50% {
+    color: #d4b483;
+  }
+  75% {
+    color: #48a9a6;
+  }
+  100% {
+    color: #4281a4;
+  }
+}
 body {
   width: 100vw;
   height: 100vh;
@@ -119,4 +136,7 @@ body .main-cont .generator-cont .generator button:hover {
   border-radius: 15px;
   cursor: pointer;
   background-color: #48a9a6;
+}
+body .main-cont .generator-cont .animate {
+  animation: nameAnimation 10s infinite;
 }/*# sourceMappingURL=styles.css.map */
