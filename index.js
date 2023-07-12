@@ -115,6 +115,7 @@ async function populateNames() {
       weightCounter.setAttribute("id", "weight-counter");
 
       counter.classList.add("counter");
+      counter.setAttribute("id", "counter");
       counter.innerText = 1;
 
       const clonedAddButton = addButton.cloneNode(true);
@@ -191,6 +192,13 @@ genBtn.addEventListener("click", () => {
       shuffledArray = shuffleArray(shuffledArray);
       chosenNames = [];
       selectedName.textContent = "All names have been selected";
+      const resetCounter = document.getElementsByClassName("counter");
+
+      console.log(resetCounter);
+      for (let i of resetCounter) {
+        // const counter = document.getElementById("counter");
+        i.innerText = 1;
+      }
     } else {
       // Reset chosen names array
 
