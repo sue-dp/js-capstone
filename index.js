@@ -78,10 +78,10 @@ async function getNames() {
 }
 
 const minusButton = document.createElement("button");
-minusButton.innerText = "-";
+minusButton.innerHTML = '<i class="fa-solid fa-minus"></i>';
 minusButton.classList.add("minus-button");
 const addButton = document.createElement("button");
-addButton.innerText = "+";
+addButton.innerHTML = '<i class="fa-solid fa-plus"></i>';
 addButton.classList.add("add-button");
 
 async function populateNames() {
@@ -166,7 +166,8 @@ const myButton = async () => {
       shuffledArray = [...unchangingArray];
       shuffledArray = shuffleArray(shuffledArray);
       chosenNames = [];
-      selectedName.textContent = "All names have been chosen - begin again!";
+      selectedName.textContent = "No more names - begin again!";
+
       const resetCounter = document.getElementsByClassName("counter");
 
       for (let i of resetCounter) {

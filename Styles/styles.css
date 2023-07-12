@@ -57,10 +57,12 @@ body .main-cont .generator-cont .name-list {
   background-color: #d4b483;
   overflow-y: scroll;
 }
-body .main-cont .generator-cont .name-list .studentName {
+body .main-cont .generator-cont .name-list .student-name {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: 60px;
+  align-items: center;
+  font-size: 3vh;
 }
 body .main-cont .generator-cont .name-list .weight-counter {
   margin-top: 5px;
@@ -117,6 +119,9 @@ body .main-cont .generator-cont .generator {
   margin-left: 25%;
 }
 body .main-cont .generator-cont .generator .selected-name {
+  display: flex;
+  justify-content: center;
+  text-align: center;
   margin-bottom: 10%;
   font-size: 100px;
   font-weight: 900;
@@ -138,5 +143,5 @@ body .main-cont .generator-cont .generator button:hover {
   background-color: #48a9a6;
 }
 body .main-cont .generator-cont .animate {
-  animation: nameAnimation 10s infinite;
+  animation: nameAnimation 8s infinite;
 }/*# sourceMappingURL=styles.css.map */
