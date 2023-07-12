@@ -1,5 +1,14 @@
 @import "./variables.scss";
 
+@keyframes nameAnimation {
+  0%   { color: $cerulean; }
+  25%  { color: $indian-red; }
+  50%  { color: $ecru; }
+  75%  { color: $verdigris; }
+  100% { color: $cerulean; }
+}
+
+
 body {
   width: 100vw;
   height: 100vh;
@@ -35,21 +44,32 @@ body {
       height: 95%;
 
       .name-list {
+        padding-top: 2%;
+        padding-bottom: 2%;
         display: flex;
         flex-direction: column;
         align-items: center;
         width: 25%;
+        height: 80vh;
         background-color: $ecru;
         overflow-y: scroll;
 
         .studentName {
-          font-size: 36px;
+          display: flex;
+          justify-content: center;
+          font-size: 60px;
         }
 
         .weight-counter {
+          margin-top: 5px;
           display: flex;
 
           .minus-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
             background-color: $indian-red;
             font-size: 24px;
             border: 1px solid black;
@@ -63,11 +83,20 @@ body {
           }
 
           .counter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 38px;
+            margin-top: 0;
+            background-color: $timberwolf;
             border: 1px solid black;
             font-size: 24px;
           }
 
           .add-button {
+            width: 40px;
+            height: 40px;
             background-color: $verdigris;
             font-size: 24px;
             border: 1px solid black;
@@ -97,7 +126,8 @@ body {
           font-size: 100px;
           font-weight: 900;
           color: $cerulean;
-        }
+          animation: nameAnimation 20s infinite;
+          
 
         button {
           width: 20%;

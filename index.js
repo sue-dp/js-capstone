@@ -36,107 +36,207 @@ async function fetchNames() {
   }
 }
 
-const studentName = document.createElement("div");
-const weightCounter = document.createElement("div");
-const minusButton = document.createElement("button");
-minusButton.innerText = "-";
-const addButton = document.createElement("button");
-addButton.innerText = "+";
-const counter = document.createElement("p");
-counter.innerText = 1;
-const nameList = document.querySelector(".name-list");
-weightCounter.appendChild(minusButton);
-weightCounter.appendChild(counter);
-weightCounter.appendChild(addButton);
+let studentName;
+let weightCounter;
 
-studentName.classList.add("student-name");
-weightCounter.classList.add("weight-counter");
-minusButton.classList.add("minus-button");
-addButton.classList.add("add-button");
-counter.classList.add("counter");
+let counter;
+// counter.innerText = 1;
+let nameList = document.querySelector(".name-list");
+// weightCounter.appendChild(minusButton);
+// weightCounter.appendChild(counter);
+// weightCounter.appendChild(addButton);
+
+// studentName.classList.add("student-name");
+// studentName.setAttribute("id", "student-name");
+// weightCounter.classList.add("weight-counter");
+// weightCounter.setAttribute("id", "weight-counter");
+// minusButton.classList.add("minus-button");
+
+// counter.classList.add("counter");
 
 let randomName = "";
 let weight = 1;
-let nameArray = [];
+
+let fullName = "";
+
+let shuffledArray = [];
+let chosenNames = [];
+
+function shuffleArray(array) {
+  const shuffled = [...array];
+
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
 
 async function getNames() {
   try {
     const studentList = await fetchNames();
 
     studentList.forEach((student) => {
-      const fullName = `${student.first_name} ${student.last_name}`;
-      nameArray.push(fullName);
-      return nameArray;
+      fullName = `${student.first_name} ${student.last_name}`;
+      shuffledArray.push(fullName);
     });
+    shuffledArray = shuffleArray(shuffledArray);
   } catch (error) {
     console.log("Error:", error);
   }
-
-  console.log(nameArray);
+  // console.log(nameArray);
+  console.log(shuffledArray);
 }
 
-getNames();
+// getNames();
+const minusButton = document.createElement("button");
+minusButton.innerText = "-";
+minusButton.classList.add("minus-button");
+const addButton = document.createElement("button");
+addButton.innerText = "+";
+addButton.classList.add("add-button");
 
-async function populateNames () {
+async function populateNames() {
   try {
-    const populateNames = await getNames();
+    await getNames();
 
-    for (i in nameArray) {
-    nameList.appendChild(nameArray[i]);
-    nameList.appendChild(weightCounter);
-  }}
-}
+    for (let i in shuffledArray) {
+      const studentName = document.createElement("div");
+      const weightCounter = document.createElement("div");
+      const counter = document.createElement("p");
 
-populateNames()
+      const name = shuffledArray[i];
 
-function addWeight() {
-  weight + 1;
-  return weight;
-}
+      studentName.textContent = name;
+      studentName.classList.add("student-name");
+      studentName.setAttribute("id", "student-name");
 
-function subtractWeight() {
-  if (weight > 1) {
-    weight - 1;
-    return weight;
-  } else {
-    return weight;
+      weightCounter.classList.add("weight-counter");
+      weightCounter.setAttribute("id", "weight-counter");
+
+      counter.classList.add("counter");
+      counter.innerText = 1;
+
+      const clonedAddButton = addButton.cloneNode(true);
+      const clonedMinusButton = minusButton.cloneNode(true);
+
+      clonedMinusButton.addEventListener("click", () => {
+        const index = shuffledArray.indexOf(name);
+        if (index !== -1) {
+          shuffledArray.splice(index, 1);
+          counter.innerText =
+            parseInt(counter.innerText) > 0
+              ? parseInt(counter.innerText) - 1
+              : 0;
+        }
+        console.log(shuffledArray);
+      });
+
+      clonedAddButton.addEventListener("click", () => {
+        shuffledArray.push(name);
+        counter.innerText = parseInt(counter.innerText) + 1;
+        console.log(shuffledArray);
+      });
+
+      weightCounter.appendChild(clonedMinusButton);
+      weightCounter.appendChild(counter);
+      weightCounter.appendChild(clonedAddButton);
+
+      studentName.appendChild(weightCounter);
+      nameList.appendChild(studentName);
+    }
+  } catch (error) {
+    console.log("Error:", error);
   }
 }
 
+populateNames();
 
-function weightNames() {
-  for (i in weight) {
-    nameArray.push(fullName);
+// function addWeight() {
+//   weight + 1;
+//   counter.textContent(weight);
+//   nameArray.push()
+//   return weight;
+// }
+
+// function subtractWeight() {
+//   if (weight > 1) {
+//     weight - 1;
+//     counter.textContent(weight);
+//     return weight;
+//   } else {
+//     counter.textContent(weight);
+//     return weight;
+//   }
+// }
+
+// function weightNames() {
+//   for (i in weight) {
+//     nameArray.push(fullName);
+//   }
+//   // minusButton = document.querySelector(".minus-button");
+//   minusButton.addEventListener("click", subtractWeight);
+
+//   // addButton = document.querySelector(".add-button");
+//   addButton.addEventListener("click", addWeight);
+// }
+const genBtn = document.getElementById("gen-btn");
+const selectedName = document.querySelector("#selected-name");
+const unchangingArray = [...shuffledArray];
+
+genBtn.addEventListener("click", () => {
+  if (shuffledArray.length >= 0) {
+    if (shuffledArray.length == 0) {
+      getNames();
+      shuffledArray = shuffleArray(shuffledArray);
+      chosenNames = [];
+      selectedName.textContent = "All names have been selected";
+    } else {
+      // Reset chosen names array
+
+      let randomIndex;
+      do {
+        randomIndex = Math.floor(Math.random() * shuffledArray.length);
+      } while (shuffledArray.includes(randomIndex));
+
+      // for (let i = 0; i < 10; i++) {
+      //   setTimeout(() => {
+      //     const randomName =
+      //       unchangingArray[Math.floor(Math.random() * unchangingArray.length)];
+      //     selectedName.textContent = randomName;
+      //   }, 100 * i);
+      // }
+
+      const chosenName = shuffledArray[randomIndex];
+      chosenNames.push(randomIndex);
+      shuffledArray.splice(randomIndex, 1);
+      selectedName.textContent = chosenName;
+      selectedName.classList.add("animate");
+    }
+    console.log(shuffledArray);
   }
-  // minusButton = document.querySelector(".minus-button");
-  minusButton.addEventListener("click", subtractWeight);
+});
 
-  // addButton = document.querySelector(".add-button");
-  addButton.addEventListener("click", addWeight);
-}
+//     const randomIndex = Math.floor(Math.random() * shuffledArray.length);
+//     const randomName = Array[randomIndex];
+//     selectedName.textContent = randomName;
+//   } else {
+//     selectedName.textContent = "No names available";
+//   }
+// });
+// function getRandomName(nameArray) {
+//   let randomIndex = Math.floor(Math.random() * nameArray.length);
+//   randomName = nameArray[randomIndex];
+//   return randomName;
+// }
+// const genBtn = document.querySelector(".gen-btn");
+// genBtn.addEventListener("click", getRandomName);
 
-function getRandomName(nameArray) {
-  let randomIndex = Math.floor(Math.random() * nameArray.length);
-  randomName = nameArray[randomIndex];
-  return randomName;
-}
-const genBtn = document.querySelector(".gen-btn");
-genBtn.addEventListener("click", getRandomName);
-
-const selectedName = document.querySelector(".selected-name");
-selectedName.textContent = randomName;
+// let selectedName = document.querySelector(".selected-name");
+// selectedName.textContent = randomName;
 
 // nameArray.splice();
 
-// document.selected-name.animate(
-//   [
-//     { color: $cerulean },
-//     { color: $indian-red },
-//     { color: $ecru },
-//     { color: $verdigris },
-//     ],
-//   {
-//     duration: 20000,
-//     iterations: Infinity,
-//   }
-// );
+// async function animateSelectedName() {
+//   const animation = await
+// }
