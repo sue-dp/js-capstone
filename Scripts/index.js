@@ -29,22 +29,19 @@ async function fetchNames() {
       headers: { auth_token: getAuth },
     });
     const answer = await response.json();
-    console.log(answer.users);
     return answer.users;
   } catch (error) {
-    console.log("Error:", error);
+    console.error("Error:", error);
   }
 }
 
 let studentName;
 let weightCounter;
-
 let counter;
 let nameList = document.querySelector(".name-list");
 
 let randomName = "";
 let weight = 1;
-
 let fullName = "";
 
 let shuffledArray = [];
@@ -72,9 +69,8 @@ async function getNames() {
     });
     shuffledArray = shuffleArray(shuffledArray);
   } catch (error) {
-    console.log("Error:", error);
+    console.error("Error:", error);
   }
-  console.log(shuffledArray);
 }
 
 const minusButton = document.createElement("button");
@@ -118,13 +114,11 @@ async function populateNames() {
               ? parseInt(counter.innerText) - 1
               : 0;
         }
-        console.log(shuffledArray);
       });
 
       clonedAddButton.addEventListener("click", () => {
         shuffledArray.push(name);
         counter.innerText = parseInt(counter.innerText) + 1;
-        console.log(shuffledArray);
       });
 
       weightCounter.appendChild(clonedMinusButton);
@@ -135,7 +129,7 @@ async function populateNames() {
       nameList.appendChild(studentName);
     }
   } catch (error) {
-    console.log("Error:", error);
+    console.error("Error:", error);
   }
 }
 
@@ -187,7 +181,6 @@ const myButton = async () => {
       });
     }
   }
-  console.log(shuffledArray);
 };
 
 genBtn.addEventListener("click", myButton);
