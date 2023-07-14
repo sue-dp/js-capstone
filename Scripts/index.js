@@ -1,5 +1,5 @@
-const email = "sue@devpipeline.com";
-const pass = "One2threesf@1";
+const email = "";
+const pass = "";
 let resObject;
 const userData = {
   email: email,
